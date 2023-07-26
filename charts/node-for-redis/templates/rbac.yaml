@@ -1,8 +1,8 @@
-{{- if .Values.serviceAccount.create -}}
+{{- if .Values.clusterRole.create -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ include "node-for-redis.fullname" . }}
+  name: {{ .Values.clusterRole.name }}
   labels: {{- include "node-for-redis.labels" . | nindent 4 }}
   # Annotations contains #meta.helm.sh/release-namespace: {{ .Release.Namespace }}
   # This makes the ClusterRole not possible to override as helm spots the difference in annotations
@@ -14,7 +14,9 @@ rules:
 - apiGroups: ["db.ibm.com"]
   resources: ["rediscluster","redisclusters"]
   verbs: ["list", "get", "watch"]
+{{- end }}
 ---
+{{- if .Values.serviceAccount.create -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -24,7 +26,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ include "node-for-redis.fullname" . }}
+  name: {{ .Values.clusterRole.name }}
 subjects:
 - kind: ServiceAccount
   name: {{ include "node-for-redis.serviceAccountName" . }}
