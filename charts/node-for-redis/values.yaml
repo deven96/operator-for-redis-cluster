@@ -17,7 +17,7 @@ fullnameOverride: ""
 
 clusterRole:
   create: false
-  name: "node-for-redis"
+  name: "cluster-role-node-for-redis"
   namespace: "default"
 
 serviceAccount:
