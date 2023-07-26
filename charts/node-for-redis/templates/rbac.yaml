@@ -1,7 +1,8 @@
+{{- if .Values.clusterRole.create -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ include "node-for-redis.fullname" . }}
+  name: {{ .Values.clusterRole.name }}
   labels: {{- include "node-for-redis.labels" . | nindent 4 }}
 rules:
 - apiGroups: [""]
@@ -10,17 +11,21 @@ rules:
 - apiGroups: ["db.ibm.com"]
   resources: ["rediscluster","redisclusters"]
   verbs: ["list", "get", "watch"]
+{{- end }}
 ---
+{{- if .Values.serviceAccount.create -}}
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+kind: RoleBinding
 metadata:
   name: {{ include "node-for-redis.fullname" . }}
   labels: {{- include "node-for-redis.labels" . | nindent 4 }}
+  namespace: {{ .Release.Namespace }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ include "node-for-redis.fullname" . }}
+  name: {{ .Values.clusterRole.name }}
 subjects:
 - kind: ServiceAccount
   name: {{ include "node-for-redis.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
+{{- end }}

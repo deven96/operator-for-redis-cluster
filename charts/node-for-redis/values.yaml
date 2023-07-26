@@ -15,8 +15,14 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+clusterRole:
+  create: false
+  name: "cluster-role-node-for-redis"
+  namespace: "default"
+
 serviceAccount:
   # Specifies whether a service account should be created
+  # A rolebinding pointing to `clusterRole.name` would also be created as well
   create: true
   # Annotations to add to the service account
   annotations: {}

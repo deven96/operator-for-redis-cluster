@@ -3,9 +3,9 @@ entries:
   node-for-redis:
   - apiVersion: v2
     appVersion: 6.2.7
-    created: "2023-01-13T16:19:54.649207321Z"
+    created: "2023-07-26T12:47:27.540058+02:00"
     description: Cluster node for interfacing with Redis
-    digest: a2fd3b5261533962dd124149f0288c68be901f0c9336f3b4924ac1b5efac6f4d
+    digest: 97d95b3448eec6310e9210d2d11579d865d29d789e2dfd08328d9f91aed1276f
     maintainers:
     - name: tomashibm
     - name: cin
@@ -14,7 +14,7 @@ entries:
     name: node-for-redis
     type: application
     urls:
-    - https://raw.githubusercontent.com/IBM/operator-for-redis-cluster/main/helm-releases/node-for-redis-0.3.14.tgz
+    - https://raw.githubusercontent.com/deven96/operator-for-redis-cluster/main/helm-releases/node-for-redis-0.3.14.tgz
     version: 0.3.14
   - apiVersion: v2
     appVersion: 6.2.7
