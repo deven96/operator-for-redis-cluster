@@ -1,5 +1,0 @@
-serviceAccount:
-  create: true
-
-clusterRole:
-  create: false
