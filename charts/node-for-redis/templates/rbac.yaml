@@ -13,7 +13,6 @@ rules:
   verbs: ["list", "get", "watch"]
 {{- end }}
 ---
-{{- if .Values.serviceAccount.create -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -28,4 +27,3 @@ subjects:
 - kind: ServiceAccount
   name: {{ include "node-for-redis.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
-{{- end }}
