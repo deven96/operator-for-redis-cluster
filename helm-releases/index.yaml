@@ -3,9 +3,9 @@ entries:
   node-for-redis:
   - apiVersion: v2
     appVersion: 6.2.7
-    created: "2023-07-26T12:47:27.540058+02:00"
+    created: "2023-07-27T13:40:58.041525+02:00"
     description: Cluster node for interfacing with Redis
-    digest: 97d95b3448eec6310e9210d2d11579d865d29d789e2dfd08328d9f91aed1276f
+    digest: 16e9fc6842cd23a189b1ac6641d88501b61270565c5b690387f84a936b9e45db
     maintainers:
     - name: tomashibm
     - name: cin
